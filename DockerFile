@@ -1,5 +1,5 @@
 # Use slim Python image to reduce size
-FROM python:3.10-slim
+FROM python:24.04
 
 # Set work directory inside the container
 WORKDIR /app
