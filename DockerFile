@@ -1,20 +1,18 @@
-# Use slim Python image to reduce size
-FROM python:3.1-slim
+# Use lightweight and supported Python image
+FROM python:3.10-slim
 
-# Set work directory inside the container
+# Set work directory
 WORKDIR /app
 
-# Install dependencies early to use Docker layer caching
+# Install dependencies
 COPY requirements.txt .
-
-# Install Python dependencies without cache
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application files
+# Copy application code
 COPY . .
 
-# Expose Flask default port (optional but good practice)
+# Expose the port Flask runs on
 EXPOSE 5000
 
-# Run the Flask app (ensure run.py exists)
+# Run the app
 CMD ["python", "run.py"]
